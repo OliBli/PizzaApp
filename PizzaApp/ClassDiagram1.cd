@@ -1,52 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PizzaApp.Customer">
-    <Position X="7.75" Y="1.25" Width="1.5" />
+    <Position X="2.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PizzaApp.Pizza">
-    <Position X="5.25" Y="0.75" Width="1.5" />
+    <Position X="2.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pizza.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PizzaApp.Order">
-    <Position X="5.5" Y="2.25" Width="1.5" />
+  <Class Name="PizzaApp.PaymentMethod">
+    <Position X="8.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Order.cs</FileName>
+      <FileName>PaymentMethod.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PizzaApp.Tillbehör">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+  <Class Name="PizzaApp.Drink">
+    <Position X="5.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Tillbehör.cs</FileName>
+      <FileName>Drink.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PizzaApp.Ingrediens">
-    <Position X="2.75" Y="0.75" Width="1.5" />
+  <Class Name="PizzaApp.Menu">
+    <Position X="7.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Ingrediens.cs</FileName>
+      <FileName>Menu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PizzaApp.Meny">
-    <Position X="2.75" Y="2.25" Width="1.5" />
+  <Class Name="PizzaApp.SideDish">
+    <Position X="7.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Meny.cs</FileName>
+      <FileName>SideDish.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PizzaApp.PayMethod">
-    <Position X="7.75" Y="3" Width="1.5" />
+  <Class Name="PizzaApp.Ingredient">
+    <Position X="2.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PayMethod.cs</FileName>
+      <FileName>Ingredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PizzaApp.getPrice">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>getPrice.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PizzaApp
 {
-    public class Meny
+    public class SideDish
     {
     }
 }
