@@ -4,12 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PizzaApp"
+    xmlns:views="clr-namespace:PizzaApp.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="PizzaApp">
+    <ShellContent Title="Home" Route="MainPage">
+        <local:MainPage />
+    </ShellContent>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="MenuPage" Route="MenuPage">
+        <views:MenuPage />
+    </ShellContent>
+   
 
 </Shell>
