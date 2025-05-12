@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaApp.Views.CartPage"
+             Title="Cart">
+
+    <Grid>
+        <Button Text="X"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Clicked="OnBackClicked"
+                BackgroundColor="Transparent"
+                TextColor="white"
+                ZIndex="1"
+                Padding="10"/>
+
+        <CollectionView x:Name="cartList"
+                        Margin="10,50,10,10">
+           
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" FontSize="18" />
+                        <Label Text="{Binding Price, StringFormat='Price: {0} kr'}" FontSize="14" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

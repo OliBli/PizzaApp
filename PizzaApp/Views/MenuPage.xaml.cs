@@ -1,65 +1,91 @@
+using PizzaApp.Models;
 using System.Collections.ObjectModel;
-using System.Text.Json;
+using System.Diagnostics;
 using System.Reflection;
-using System.IO;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 
 namespace PizzaApp.Views
 {
     public partial class MenuPage : ContentPage
     {
-        public ObservableCollection<Pizza> Pizzas { get; set; } = new ObservableCollection<Pizza>();
+        public ObservableCollection<MenuItemModel> MenuItems { get; set; } = new ObservableCollection<MenuItemModel>();
 
         public MenuPage()
         {
-            InitializeComponent();  
-            LoadMenuData();  
+            InitializeComponent();       
+            BindingContext = this;
+            LoadMenuData();
         }
 
         private async void LoadMenuData()
         {
             try
             {
+                string? url = "PizzaApp.api.menu.json";
                 var assembly = Assembly.GetExecutingAssembly();
-                using Stream? stream = assembly.GetManifestResourceStream("PizzaApp.api.menu.json");
+                using Stream? stream = assembly.GetManifestResourceStream(url);
 
                 if (stream == null)
                 {
-                    await DisplayAlert("Fel", "Kunde inte hitta menu.json!", "OK");  
+                    await DisplayAlert("Fel", "Kunde inte hitta menu.json!", "OK");
                     return;
                 }
 
                 using StreamReader reader = new StreamReader(stream);
                 string json = await reader.ReadToEndAsync();
 
-                if (string.IsNullOrEmpty(json))
+                var options = new JsonSerializerOptions
                 {
-                    await DisplayAlert("Fel", "Menyn är tom eller JSON-filen är ogiltig.", "OK");
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var allItems = JsonSerializer.Deserialize<List<MenuItemModel>>(json, options);
+
+                if (allItems == null || allItems.Count == 0)
+                {
+                    await DisplayAlert("Varning", "Ingen menydata hittades.", "OK");
                     return;
                 }
 
-                var pizzas = JsonSerializer.Deserialize<List<Pizza>>(json);
-
-                if (pizzas == null)
-                {
-                    await DisplayAlert("Fel", "Det gick inte att deserialisera menyn.", "OK");
-                    return;
+                foreach (var item in allItems)
+                {               
+                    MenuItems.Add(item);
                 }
 
-                foreach (var pizza in pizzas)
-                {
-                    Pizzas.Add(pizza);
-                }
-
-                menuList.ItemsSource = Pizzas;
-                if (Pizzas.Count == 0)
-                {
-                    await DisplayAlert("Varning", "Ingen pizza hittades i menyn!", "OK");
-                }
+                menuList.ItemsSource = MenuItems;
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Fel", $"Ett fel inträffade: {ex.Message}", "OK");  
+                await DisplayAlert("Fel", $"Ett fel inträffade: {ex.Message}", "OK");
             }
+
+            
+        }
+
+        private void UppdateButton()
+        {
+            cartButton.Text = $"Se your cart({CartService.CartItems.Count})";
+        }
+        private async void OnAddCart(object sender, EventArgs e)
+        {
+           
+            if(sender is Button button && button.BindingContext is MenuItemModel selectedItem)
+            {
+                CartService.CartItems.Add(selectedItem);
+                UppdateButton();
+                await DisplayAlert("Order", $"You have Orderd: {selectedItem.Name} ({selectedItem.Price} kr)", "Ok");
+            }
+        }
+        private async void OnCartClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//CartPage");
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            UppdateButton();
         }
     }
 }

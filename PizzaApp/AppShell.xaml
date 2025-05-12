@@ -14,6 +14,10 @@
     <ShellContent Title="MenuPage" Route="MenuPage">
         <views:MenuPage />
     </ShellContent>
-   
+
+    <ShellContent Title="CartPage" Route="CartPage">
+        <views:CartPage/>
+    </ShellContent>
+
 
 </Shell>

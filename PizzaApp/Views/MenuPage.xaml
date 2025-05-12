@@ -1,22 +1,45 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PizzaApp.Views.MenuPage"
-             Title="MenuPage">
+             xmlns:local="clr-namespace:PizzaApp.Models"  
+    x:Class="PizzaApp.Views.MenuPage"
+             Title="Meny" >
 
-    <VerticalStackLayout Padding="10">
-        <CollectionView x:Name="menuList" Margin="0,20,0,0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border Padding="10" Margin="5">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
-                            <Label Text="{Binding Description}" FontSize="14" TextColor="Gray"/>
-                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="DarkGreen"/>
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <CollectionView x:Name="menuList" Margin="0,20,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                            <Label Text="{Binding Category}" FontSize="14" TextColor="White" />
+
+
+                            <Label Text="{Binding ToppingText}"
+                           FontSize="13" TextColor="White" />
+
+
+                            <Label Text="{Binding Rank, StringFormat='Rank: {0}'}" 
+                                   FontSize="13" TextColor="White"
+                                   />
+
+                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White"/>
+
+                            <Button Text="Add to cart"
+                                Clicked="OnAddCart"
+                                
+                                FontSize="10">
+                            </Button>
+
                         </VerticalStackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="cartButton" Text="Se your Cart (0)" Clicked="OnCartClicked">
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
