@@ -5,7 +5,7 @@
              Title="Cart">
 
     <Grid>
-        <Button Text="X"
+        <Button Text="Back"
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 Clicked="OnBackClicked"
@@ -20,11 +20,19 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout>
-                        <Label Text="{Binding Name}" FontSize="18" />
-                        <Label Text="{Binding Price, StringFormat='Price: {0} kr'}" FontSize="14" />
+                        <Label Text="{Binding DisplayName}" FontSize="18" TextColor="White" />
+                        <Label Text="{Binding TotalPrice, StringFormat='Price: {0} kr'}" FontSize="14"  TextColor="White"/>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Text="Order"
+                Clicked="onOrder"
+                VerticalOptions="End"
+                Background="PaleVioletRed"
+                TextColor="White">
+            
+        </Button>
     </Grid>
 </ContentPage>

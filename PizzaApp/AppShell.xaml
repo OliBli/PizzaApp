@@ -18,6 +18,9 @@
     <ShellContent Title="CartPage" Route="CartPage">
         <views:CartPage/>
     </ShellContent>
+    <ShellContent Title="OrderPage" Route="OrderPage">
+        <views:OrderPage/>
+    </ShellContent>
 
 
 </Shell>

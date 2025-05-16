@@ -12,7 +12,19 @@ public partial class CartPage : ContentPage
 	private async void OnBackClicked(object sender, EventArgs e)
 	{
 
-		await Navigation.PopAsync();
-	}
+        await Shell.Current.GoToAsync("//MenuPage");
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        cartList.ItemsSource = null;
+        cartList.ItemsSource = CartService.CartItems;
+    }
+
+    private async void onOrder(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//OrderPage");
+    }
 
 }

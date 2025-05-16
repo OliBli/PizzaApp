@@ -1,9 +1,11 @@
 using PizzaApp.Models;
+using PizzaApp.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+
 
 namespace PizzaApp.Views
 {
@@ -65,14 +67,30 @@ namespace PizzaApp.Views
 
         private void UppdateButton()
         {
-            cartButton.Text = $"Se your cart({CartService.CartItems.Count})";
+            cartButton.Text = $"Se your cart({CartService.GetQuantity()})";
         }
         private async void OnAddCart(object sender, EventArgs e)
         {
            
             if(sender is Button button && button.BindingContext is MenuItemModel selectedItem)
             {
-                CartService.CartItems.Add(selectedItem);
+                var cartItem = CartService.CartItems.FirstOrDefault(c => c.ItemModel.Name == selectedItem.Name);
+
+                if (cartItem != null)
+                {
+                    
+                    cartItem.Quantity++;
+                }
+                else
+                {
+                    
+                    var newCartItem = new CartItem
+                    {
+                        ItemModel = selectedItem,
+                        Quantity = 1
+                    };
+                    CartService.CartItems.Add(newCartItem);
+                }
                 UppdateButton();
                 await DisplayAlert("Order", $"You have Orderd: {selectedItem.Name} ({selectedItem.Price} kr)", "Ok");
             }
