@@ -1,11 +1,9 @@
 using PizzaApp.Models;
-using PizzaApp.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
-
 
 namespace PizzaApp.Views
 {
@@ -15,7 +13,7 @@ namespace PizzaApp.Views
 
         public MenuPage()
         {
-            InitializeComponent();       
+            InitializeComponent();
             BindingContext = this;
             LoadMenuData();
         }
@@ -51,7 +49,7 @@ namespace PizzaApp.Views
                 }
 
                 foreach (var item in allItems)
-                {               
+                {
                     MenuItems.Add(item);
                 }
 
@@ -62,39 +60,31 @@ namespace PizzaApp.Views
                 await DisplayAlert("Fel", $"Ett fel inträffade: {ex.Message}", "OK");
             }
 
-            
+
         }
 
         private void UppdateButton()
         {
-            cartButton.Text = $"Se your cart({CartService.GetQuantity()})";
+            cartButton.Text = $"Se your cart({CartService.CartItems.Count})";
         }
-        private async void OnAddCart(object sender, EventArgs e)
+       
+         private async void OnAddCart(object sender, EventArgs e)
         {
-           
-            if(sender is Button button && button.BindingContext is MenuItemModel selectedItem)
+            if (sender is Button button && button.BindingContext is MenuItemModel selectedItem)
             {
-                var cartItem = CartService.CartItems.FirstOrDefault(c => c.ItemModel.Name == selectedItem.Name);
+                var cartItem = new CartItem
+                {
+                    ItemModel = selectedItem,
+                    Quantity = 1 // Default quantity for a new item
+                };
 
-                if (cartItem != null)
-                {
-                    
-                    cartItem.Quantity++;
-                }
-                else
-                {
-                    
-                    var newCartItem = new CartItem
-                    {
-                        ItemModel = selectedItem,
-                        Quantity = 1
-                    };
-                    CartService.CartItems.Add(newCartItem);
-                }
+                CartService.CartItems.Add(cartItem);
                 UppdateButton();
-                await DisplayAlert("Order", $"You have Orderd: {selectedItem.Name} ({selectedItem.Price} kr)", "Ok");
+                await DisplayAlert("Order", $"You have ordered: {selectedItem.Name} ({selectedItem.Price} kr)", "Ok");
             }
         }
+
+        
         private async void OnCartClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//CartPage");
