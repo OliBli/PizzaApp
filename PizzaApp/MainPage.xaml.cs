@@ -37,7 +37,12 @@ namespace PizzaApp
             else
             {
                 await DisplayAlert("Error", "Invalid email or password", "OK");
+
+
             }
+
+            EmailEntry.Text = string.Empty;
+            MainPasswordEntry.Text = string.Empty;
 
 
 

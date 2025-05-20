@@ -29,7 +29,7 @@
                 <Entry Placeholder="Confirm Password" x:Name="PassEntryconfomation"/>
 
 
-                <Button Text="Register" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnRegisterClicked"/>
+                <Button Text="Register" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnRegisterClicked" BackgroundColor="Red"/>
 
 
             </VerticalStackLayout>

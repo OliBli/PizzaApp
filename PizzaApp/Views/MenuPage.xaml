@@ -3,7 +3,7 @@
              x:Class="PizzaApp.Views.MenuPage"
              Title="Meny">
 
-    <Grid RowDefinitions="*,Auto">
+    <Grid RowDefinitions="*,Auto,Auto">
 
         <CollectionView x:Name="menuList"
                         Grid.Row="0"
@@ -29,21 +29,28 @@
                             <Label Text="{Binding Rank, StringFormat='Rank: {0}'}" FontSize="13" TextColor="White" HorizontalOptions="Center" />
                             <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White" HorizontalOptions="Center" />
                             <Button Text="Add to cart"  Clicked="OnAddCart" BackgroundColor="Red"  TextColor="White" FontAttributes="Bold"  FontSize="16"  CornerRadius="30" HorizontalOptions="Fill" />
+                           
+                        
                         </VerticalStackLayout>
 
                     </Frame>
+                  
 
                 </DataTemplate>
+            
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
+       
+
         <Button x:Name="cartButton"
                 Grid.Row="1"
                 Text="Se your Cart (0)"
                 Clicked="OnCartClicked"
                 BackgroundColor="Red"
                 Margin="20"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" Padding="10"/>
+
+        <Button  Text="logout" Clicked="OnlogoutClicked" BackgroundColor="Red" Grid.Row="2"></Button>
     </Grid>
 </ContentPage>

@@ -40,6 +40,11 @@ namespace PizzaApp
             Preferences.Set("savedEmail", user.Email);
             Preferences.Set("savedPassword", user.Password);
 
+            EmailEntry.Text = string.Empty;
+            PassEntry.Text = string.Empty;
+            PassEntryconfomation.Text = string.Empty;
+            
+
         }
 
         private async void OnLoginTapped(object sender, EventArgs e)

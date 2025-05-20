@@ -89,7 +89,14 @@ namespace PizzaApp.Views
         {
             await Shell.Current.GoToAsync("//CartPage");
         }
-
+        private async void OnlogoutClicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Logga ut", "Vill du logga ut?", "Ja", "Nej");
+            if (answer)
+            {
+                await Shell.Current.GoToAsync("//MainPage");
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
