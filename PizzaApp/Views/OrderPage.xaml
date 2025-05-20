@@ -6,12 +6,14 @@
     <VerticalStackLayout>
         <Label Text="Debit Card"></Label>
         
-        <Entry Placeholder="The 16 numbers" ></Entry>
-        <Entry Placeholder="Month/Year"></Entry>
-        <Entry Placeholder="3 digiets"></Entry>
+        <Entry x:Name="CardEntry" TextChanged="Numbers_TextChanged" Placeholder="The 16 numbers" ></Entry>
+        <Entry x:Name="DateEntry" TextChanged="Date_TextChanged" Placeholder="mm/yy"></Entry>
+        <Entry x:Name="CvvEntry" TextChanged="CVV_TextChanged" Placeholder="CVV"></Entry>
 
         <Label Text="Address"></Label>
-        <Entry Placeholder="Your Address"></Entry>
+        <Entry x:Name="Address" Placeholder="Your Address"></Entry>
+
+        <Button Text="Order" Clicked="onOrderdClicked"></Button>
         
     </VerticalStackLayout>
 </ContentPage>

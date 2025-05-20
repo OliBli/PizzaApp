@@ -27,7 +27,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Order"
+        <Button Text="To Order"
                 Clicked="onOrder"
                 VerticalOptions="End"
                 Background="PaleVioletRed"
