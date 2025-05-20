@@ -62,7 +62,49 @@ public partial class OrderPage : ContentPage
 	private async void onOrderdClicked(object sender, EventArgs e)
 	{
 
-		if (CartService.CartItems.Count == 0) 
+        if (string.IsNullOrWhiteSpace(CardEntry.Text))
+        {
+            await DisplayAlert("Fel", "Please enter card number", "Ok");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(DateEntry.Text))
+        {
+            await DisplayAlert("Fel", "Please enter expiry date", "Ok");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(CvvEntry.Text))
+        {
+            await DisplayAlert("Fel", "Please enter CVV", "Ok");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(Address.Text))
+        {
+            await DisplayAlert("Fel", "Please enter delivery address", "Ok");
+            return;
+        }
+
+        if (CardEntry.Text.Length != 16)
+        {
+            await DisplayAlert("Fel", "Card number must be 16 digits", "Ok");
+            return;
+        }
+
+        if (!DateEntry.Text.Contains("/")) 
+        {
+            await DisplayAlert("Fel", "Expiry date must be in MM/YY format", "Ok");
+            return;
+        }
+
+        if (CvvEntry.Text.Length != 3)
+        {
+            await DisplayAlert("Fel", "CVV must be 3 digits", "Ok");
+            return;
+        }
+
+        if (CartService.CartItems.Count == 0) 
 		{ 
 			await DisplayAlert("Fel", "Your cart is eampty", "Ok");
 			return;

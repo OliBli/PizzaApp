@@ -2,18 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaApp.Views.OrderPage"
-             Title="OrderPage">
-    <VerticalStackLayout>
-        <Label Text="Debit Card"></Label>
-        
-        <Entry x:Name="CardEntry" TextChanged="Numbers_TextChanged" Placeholder="The 16 numbers" ></Entry>
-        <Entry x:Name="DateEntry" TextChanged="Date_TextChanged" Placeholder="mm/yy"></Entry>
-        <Entry x:Name="CvvEntry" TextChanged="CVV_TextChanged" Placeholder="CVV"></Entry>
+             Title="Order"
+             BackgroundColor="#2E2E2E">
+   
 
-        <Label Text="Address"></Label>
-        <Entry x:Name="Address" Placeholder="Your Address"></Entry>
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
 
-        <Button Text="Order" Clicked="onOrderdClicked"></Button>
-        
-    </VerticalStackLayout>
+            <Label Text="Checkout"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#E57373" />
+            
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Card Number" FontAttributes="Bold" TextColor="#E0E0E0"/>
+                <Frame BackgroundColor="#3A3A3A" CornerRadius="8" Padding="10" HasShadow="False" >
+                    <Entry x:Name="CardEntry"
+                           Placeholder="1234 5678 9012 3456"
+                           TextChanged="Numbers_TextChanged"
+                           Keyboard="Numeric"
+                           BackgroundColor="Transparent"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#BBBBBB"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Expiry Date (MM/YY)" FontAttributes="Bold" TextColor="#E0E0E0"/>
+                <Frame BackgroundColor="#3A3A3A" CornerRadius="8" Padding="10" HasShadow="False">
+                    <Entry x:Name="DateEntry"
+                           Placeholder="MM/YY"
+                           TextChanged="Date_TextChanged"
+                           Keyboard="Numeric"
+                           BackgroundColor="Transparent"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#BBBBBB"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="CVV" FontAttributes="Bold" TextColor="#E0E0E0"/>
+                <Frame BackgroundColor="#3A3A3A" CornerRadius="8" Padding="10" HasShadow="False">
+                    <Entry x:Name="CvvEntry"
+                           Placeholder="123"
+                           TextChanged="CVV_TextChanged"
+                           Keyboard="Numeric"
+                           IsPassword="True"
+                           BackgroundColor="Transparent"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#BBBBBB"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Delivery Address" FontAttributes="Bold" TextColor="#E0E0E0"/>
+                <Frame BackgroundColor="#3A3A3A" CornerRadius="8" Padding="10" HasShadow="False">
+                    <Entry x:Name="Address"
+                           Placeholder="Your address"
+                           BackgroundColor="Transparent"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#BBBBBB"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <Button Text="Place Order"
+                    Clicked="onOrderdClicked"
+                    BackgroundColor="#B22222"  
+                TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    Padding="12"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

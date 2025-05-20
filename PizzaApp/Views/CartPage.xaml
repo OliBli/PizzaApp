@@ -2,37 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaApp.Views.CartPage"
-             Title="Cart">
+             Title="Cart"
+             BackgroundColor="#2E2E2E">
+  
 
-    <Grid>
+    <Grid Padding="16">
+
+        
         <Button Text="Back"
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 Clicked="OnBackClicked"
                 BackgroundColor="Transparent"
-                TextColor="white"
-                ZIndex="1"
-                Padding="10"/>
+                TextColor="#E57373" 
+            FontAttributes="Bold"
+                Padding="10"
+                ZIndex="1"/>
 
-        <CollectionView x:Name="cartList"
-                        Margin="10,50,10,10">
-           
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <VerticalStackLayout>
-                        <Label Text="{Binding DisplayName}" FontSize="18" TextColor="White" />
-                        <Label Text="{Binding TotalPrice, StringFormat='Price: {0} kr'}" FontSize="14"  TextColor="White"/>
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            <CollectionView x:Name="cartList"
+                        Margin="0,50,0,70"
+                        BackgroundColor="Transparent"
+                        SelectionMode="None">
 
-        <Button Text="To Order"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#3A3A3A" CornerRadius="8" Padding="12" Margin="0,6" HasShadow="False">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding DisplayName}" FontSize="18" TextColor="#FFFFFF" FontAttributes="Bold"/>
+                                <Label Text="{Binding TotalPrice, StringFormat='Price: {0} kr'}" FontSize="14"  TextColor="#BBBBBB"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            
+            <Button Text="To Order"
                 Clicked="onOrder"
                 VerticalOptions="End"
-                Background="PaleVioletRed"
-                TextColor="White">
-            
-        </Button>
+                HorizontalOptions="Fill"
+                BackgroundColor="#B22222"  
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="12"
+                Padding="14"
+                Margin="0,0,0,10"/>
     </Grid>
 </ContentPage>

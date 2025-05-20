@@ -18,8 +18,16 @@ public partial class CartPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        cartList.ItemsSource = null;
-        cartList.ItemsSource = CartService.CartItems;
+        var groupedItems = CartService.CartItems
+       .GroupBy(ci => ci.ItemModel.Name)
+       .Select(group => new
+       {
+           DisplayName = $"{group.Sum(ci => ci.Quantity)}x {group.Key}",
+           TotalPrice = group.Sum(ci => ci.TotalPrice)
+       })
+       .ToList();
+
+        cartList.ItemsSource = groupedItems;
     }
 
     private async void onOrder(object sender, EventArgs e)
