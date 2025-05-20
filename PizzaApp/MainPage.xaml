@@ -20,10 +20,10 @@
                 <Entry Placeholder="Email" x:Name="EmailEntry"/>
 
                 <Label Text="Password" Margin="10"/>
-                <Entry Placeholder="Password" x:Name="MainPasswordEntry"/>
+                <Entry Placeholder="Password" x:Name="MainPasswordEntry" IsPassword="True"/>
 
 
-                <Button Text="Login" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnloginTapped"/>
+                <Button Text="Login" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnloginTapped" BackgroundColor="Red"  />
 
 
             </VerticalStackLayout>

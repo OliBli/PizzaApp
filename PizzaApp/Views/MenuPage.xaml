@@ -1,45 +1,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:PizzaApp.Models"  
-    x:Class="PizzaApp.Views.MenuPage"
-             Title="Meny" >
+             x:Class="PizzaApp.Views.MenuPage"
+             Title="Meny">
 
+    <Grid RowDefinitions="*,Auto">
 
-    <ScrollView>
-        <VerticalStackLayout>
+        <CollectionView x:Name="menuList"
+                        Grid.Row="0"
+                        Margin="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Default">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
 
-            <CollectionView x:Name="menuList" Margin="0,20,0,0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Spacing="5">
+                    <Frame HasShadow="True"
+                        CornerRadius="18"
+                        Margin="8"
+                        Padding="0"
+                        BackgroundColor="#232323">
 
-                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="White"  HorizontalOptions="Center" />
+                        <VerticalStackLayout Padding="10" Spacing="5">
+                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
                             <Label Text="{Binding Category}" FontSize="14" TextColor="White" HorizontalOptions="Center" />
-
-
-                            <Label Text="{Binding ToppingText}"
-                           FontSize="13" TextColor="White" HorizontalOptions="Center" />
-
-
-                            <Label Text="{Binding Rank, StringFormat='Rank: {0}'}" 
-                                   FontSize="13" TextColor="White"
-                                  HorizontalOptions="Center" />
-
-                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White" HorizontalOptions="Center"/>
-
-                            <Button Text="Add to cart"
-                             Clicked="OnAddCart" BackgroundColor="Red" TextColor="White" Margin="20" FontAttributes="Bold" 
-                             HorizontalOptions="Center" WidthRequest="500"
-                             FontSize="20" CornerRadius="30" >
-                            </Button>
-
+                            <Label Text="{Binding ToppingText}" FontSize="13" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding Rank, StringFormat='Rank: {0}'}" FontSize="13" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White" HorizontalOptions="Center" />
+                            <Button Text="Add to cart"  Clicked="OnAddCart" BackgroundColor="Red"  TextColor="White" FontAttributes="Bold"  FontSize="16"  CornerRadius="30" HorizontalOptions="Fill" />
                         </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button x:Name="cartButton" Text="Se your Cart (0)" Clicked="OnCartClicked" BackgroundColor="Red" Margin="20" >
-            </Button>
-        </VerticalStackLayout>
-    </ScrollView>
 
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+        <Button x:Name="cartButton"
+                Grid.Row="1"
+                Text="Se your Cart (0)"
+                Clicked="OnCartClicked"
+                BackgroundColor="Red"
+                Margin="20"
+                HorizontalOptions="Fill" />
+    </Grid>
 </ContentPage>
