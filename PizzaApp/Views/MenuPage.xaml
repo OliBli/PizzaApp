@@ -13,31 +13,31 @@
                     <DataTemplate>
                         <VerticalStackLayout Spacing="5">
 
-                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="White" />
-                            <Label Text="{Binding Category}" FontSize="14" TextColor="White" />
+                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="White"  HorizontalOptions="Center" />
+                            <Label Text="{Binding Category}" FontSize="14" TextColor="White" HorizontalOptions="Center" />
 
 
                             <Label Text="{Binding ToppingText}"
-                           FontSize="13" TextColor="White" />
+                           FontSize="13" TextColor="White" HorizontalOptions="Center" />
 
 
                             <Label Text="{Binding Rank, StringFormat='Rank: {0}'}" 
                                    FontSize="13" TextColor="White"
-                                   />
+                                  HorizontalOptions="Center" />
 
-                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White"/>
+                            <Label Text="{Binding Price, StringFormat='Pris: {0} kr'}" FontSize="14" TextColor="White" HorizontalOptions="Center"/>
 
                             <Button Text="Add to cart"
-                                Clicked="OnAddCart"
-                                
-                                FontSize="10">
+                             Clicked="OnAddCart" BackgroundColor="Red" TextColor="White" Margin="20" FontAttributes="Bold" 
+                             HorizontalOptions="Center" WidthRequest="500"
+                             FontSize="20" CornerRadius="30" >
                             </Button>
 
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button x:Name="cartButton" Text="Se your Cart (0)" Clicked="OnCartClicked">
+            <Button x:Name="cartButton" Text="Se your Cart (0)" Clicked="OnCartClicked" BackgroundColor="Red" Margin="20" >
             </Button>
         </VerticalStackLayout>
     </ScrollView>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PizzaApp.MainPage">
+             x:Class="PizzaApp.RegisterPage">
     <ScrollView>
-        <VerticalStackLayout Spacing="0" Padding="20" >
+        <VerticalStackLayout Spacing="0" Padding="20">
 
             <Grid Margin="0,20,0,0" ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
@@ -11,19 +11,25 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Already have an Account?" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Register a new account" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Image Source="logo.png" Grid.Column="1" HeightRequest="300" WidthRequest="350" />
             </Grid>
 
             <VerticalStackLayout Margin="0,20,0,0">
+                <Label Text="Username" Margin="10"/>
+                <Entry Placeholder="Username" x:Name="UserEntry"/>
+
                 <Label Text="Email" Margin="10"/>
                 <Entry Placeholder="Email" x:Name="EmailEntry"/>
 
                 <Label Text="Password" Margin="10"/>
-                <Entry Placeholder="Password" x:Name="MainPasswordEntry"/>
+                <Entry Placeholder="Password" x:Name="PassEntry"/>
+
+                <Label Text=" Confirm Password" Margin="10"/>
+                <Entry Placeholder="Confirm Password" x:Name="PassEntryconfomation"/>
 
 
-                <Button Text="Login" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnloginTapped"/>
+                <Button Text="Register" CornerRadius="20" TextColor="White" Margin="0,20,0,0" Clicked="OnRegisterClicked"/>
 
 
             </VerticalStackLayout>
@@ -35,10 +41,10 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Label Text="New User?" FontSize="14" Margin="0" Grid.Column="0"/>
-                <Label Text="Register now" FontSize="14" Margin="0" TextColor="Blue" TextDecorations="Underline"  Grid.Column="1">
+                <Label Text="Already have an Account?" FontSize="14" Margin="0" Grid.Column="0"/>
+                <Label Text="Login" FontSize="14" Margin="0" TextColor="Blue" TextDecorations="Underline"  Grid.Column="1">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                        <TapGestureRecognizer Tapped="OnLoginTapped"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
@@ -49,8 +55,3 @@
     </ScrollView>
 
 </ContentPage>
-
-
-
-        
-        
